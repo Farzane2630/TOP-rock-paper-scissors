@@ -22,7 +22,9 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(computerChoice, humanChoice) {
+function playRound() {
+  const computerChoice = getComputerChoice()
+  const humanChoice= getHumanChoice()
   if (humanChoice === computerChoice) {
     console.log("Both picked same choice, please try again!");
   }
@@ -57,7 +59,7 @@ function playRound(computerChoice, humanChoice) {
 
 function playGame() {
   while (humanScore < 5 && computerScore < 5) {
-    playRound(getComputerChoice(), getHumanChoice());
+    playRound();
   }
 
   if (humanScore === 5) {
