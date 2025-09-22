@@ -2,6 +2,7 @@ const btns = document.querySelectorAll(".choice");
 const score = document.querySelector("#score");
 const humanChoiceBtn = document.querySelector(".human-choice");
 const computerChoiceBtn = document.querySelector(".computer-choice");
+const gameBoardContainer = document.querySelector(".game-board-section")
 const resultContainer = document.querySelector(".result-section");
 const choices = [
   { title: "Paper", src: "/images/icon-paper.svg" },
@@ -36,10 +37,14 @@ Array.from(btns).forEach((btn, index) => {
 let humanScore = 0;
 let computerScore = 0;
 
-const updateUI = (node, index) => {
-  node.innerHTML = `<button type="button">
+const updateUI = (node, index, section) => {
+  node.innerHTML = `<button type="button" class="choice ${choices[
+    index
+  ].title.toLocaleLowerCase()}">
               <img src=${choices[index].src} alt=${choices[index].title}>
           </button>`;
+
+  section.classList.toggle("hide");
 };
 
 function playRound() {
