@@ -1,0 +1,69 @@
+/* variables */
+:root {
+  --Gold-500: hsl(39, 89%, 49%);
+  --Gold-600: hsl(28, 76%, 44%);
+  --Blue-500: hsl(230, 89%, 62%);
+  --Blue-700: hsl(229, 64%, 46%); /*(score text)*/
+  --Red-600: hsl(349, 71%, 52%);
+  --Red-800: hsl(347, 75%, 35%);
+  --Purple-600: hsl(261, 73%, 60%);
+  --Purple-700: hsl(261, 51%, 44%);
+  --Light-blue-400: hsl(189, 59%, 53%);
+  --Light-blue-500: hsl(194, 58%, 42%);
+  --Navy-900: hsl(229, 25%, 31%); /*(dark text)*/
+  --Gray-600: hsl(246, 11%, 37%); /*(header outline*/
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: inherit;
+}
+
+body {
+  background-color: var(--Navy-900);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 4em;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 1rem;
+
+  @media (min-width: 45em) {
+    padding-inline: 10em;
+  }
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  border: 0.2em var(--Gray-600) solid;
+  border-radius: 1em;
+}
+
+.score-container {
+  background-color: white;
+  border-radius: 1em;
+  padding: 1em;
+  display: grid;
+  gap: 0.5em;
+  justify-items: center;
+}
+
+.score-container p {
+    color: var(--Blue-700);
+}
+
+#score {
+    color: var(--Gray-600);
+    font-weight: 700;
+}
