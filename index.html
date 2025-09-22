@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js" defer></script>
     <title>TOP | Rock Paper Scissors</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <img src="/images/logo.svg" alt="logo" />
+      <div class="score-container">
+        <h2>Score</h2>
+        <h2 id="score">0</h2>
+      </div>
+    </header>
+    <main>
+      <section class="game-board-section" aria-label="game-board">
+        <div class="choice-wrapper">
+          <button type="button" class="choice paper">
+            <img src="/images/icon-paper.svg" alt="paper" />
+          </button>
+          <button type="button" class="choice scissors">
+            <img src="/images/icon-scissors.svg" alt="scissors" />
+          </button>
+        </div>
+        <button type="button" class="choice rock">
+          <img src="/images/icon-rock.svg" alt="rock" />
+        </button>
+      </section>
+
+      <section class="result-section">
+        <div class="human-choice">
+            <button type="button">
+                <img src="" alt="">
+            </button>
+        </div> 
+        <div class="computer-choice">
+            <button type="button">
+                <img src="" alt="">
+            </button>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

@@ -1,39 +1,57 @@
+const btns = document.querySelectorAll(".choice");
+const score = document.querySelector("#score");
+const humanChoiceBtn = document.querySelector(".human-choice");
+const computerChoiceBtn = document.querySelector(".computer-choice");
+const resultContainer = document.querySelector(".result-section");
+const choices = [
+  { title: "Paper", src: "/images/icon-paper.svg" },
+  { title: "Scissors", src: "/images/icon-scissors.svg" },
+  { title: "Rock", src: "/images/icon-rock.svg" },
+];
+
+let humanChoice = "";
+let computerChoice = "";
+
 function getComputerChoice() {
   const randomNum = Math.floor(Math.random() * 3);
+  computerChoice = choices[randomNum].title;
 
-  switch (randomNum) {
-    case 0:
-      return "rock";
-
-    case 1:
-      return "paper";
-    case 2:
-      return "scissors";
-
-    default:
-      break;
-  }
+  updateUI(computerChoiceBtn, randomNum);
 }
 
-function getHumanChoice() {
-  return prompt("Write your choice:").toLocaleLowerCase();
-}
+const getHumanChoice = (index) => {
+  humanChoice = choices[index].title;
+  updateUI(humanChoiceBtn, index);
+  playRound();
+};
+
+Array.from(btns).forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    getComputerChoice();
+    getHumanChoice(index);
+    playGame();
+  });
+});
 
 let humanScore = 0;
 let computerScore = 0;
 
+const updateUI = (node, index) => {
+  node.innerHTML = `<button type="button">
+              <img src=${choices[index].src} alt=${choices[index].title}>
+          </button>`;
+};
+
 function playRound() {
-  const computerChoice = getComputerChoice()
-  const humanChoice= getHumanChoice()
   if (humanChoice === computerChoice) {
     console.log("Both picked same choice, please try again!");
   }
 
   // Humanlose scenario
   if (
-    (humanChoice === "rock" && computerChoice === "paper") ||
-    (humanChoice === "paper" && computerChoice === "scissors") ||
-    (humanChoice === "scissors" && computerChoice === "rock")
+    (humanChoice === "Rock" && computerChoice === "Paper") ||
+    (humanChoice === "Paper" && computerChoice === "Scissors") ||
+    (humanChoice === "Scissors" && computerChoice === "Rock")
   ) {
     computerScore++;
     console.log(
@@ -43,9 +61,9 @@ function playRound() {
 
   // Humanwin scenario
   if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper")
+    (humanChoice === "Rock" && computerChoice === "Scissors") ||
+    (humanChoice === "Paper" && computerChoice === "Rock") ||
+    (humanChoice === "Scissors" && computerChoice === "Paper")
   ) {
     humanScore++;
     console.log(
@@ -53,26 +71,25 @@ function playRound() {
     );
   }
 
-  console.log("humanScore:", humanScore);
-  console.log("computerScore: ", computerScore);
+  score.textContent = humanScore;
 }
 
-function playGame() {
-  while (humanScore < 5 && computerScore < 5) {
-    playRound();
-  }
+const resetGame = () => {
+  humanScore = 0;
+  computerScore = 0;
+  score.textContent = 0;
+};
 
-  if (humanScore === 5) {
+function playGame() {
+  if (Number(score.textContent) === 3) {
     alert(
       `cangrats, you won! your score=${humanScore} | system score=${computerScore}`
     );
-  } else if (computerScore === 5) {
+    resetScores();
+  } else if (computerScore === 3) {
     alert(
       `System won!system score=${computerScore} | your score=${humanScore}`
     );
-  } else {
-    alert(`Both won! score=${humanScore}`);
+    resetScores();
   }
 }
-
-playGame();
