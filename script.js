@@ -2,8 +2,10 @@ const btns = document.querySelectorAll(".choice");
 const score = document.querySelector("#score");
 const humanChoiceBtn = document.querySelector(".human-choice");
 const computerChoiceBtn = document.querySelector(".computer-choice");
-const gameBoardContainer = document.querySelector(".game-board-section")
+const gameBoardContainer = document.querySelector(".game-board-section");
 const resultContainer = document.querySelector(".result-section");
+const resultState = document.querySelector(".result-state");
+const playAgainBtn = document.querySelector(".play-again-btn");
 const choices = [
   { title: "Paper", src: "/images/icon-paper.svg" },
   { title: "Scissors", src: "/images/icon-scissors.svg" },
@@ -17,12 +19,12 @@ function getComputerChoice() {
   const randomNum = Math.floor(Math.random() * 3);
   computerChoice = choices[randomNum].title;
 
-  updateUI(computerChoiceBtn, randomNum);
+  updateUI(computerChoiceBtn, randomNum, resultContainer);
 }
 
 const getHumanChoice = (index) => {
   humanChoice = choices[index].title;
-  updateUI(humanChoiceBtn, index);
+  updateUI(humanChoiceBtn, index, gameBoardContainer);
   playRound();
 };
 
@@ -30,7 +32,7 @@ Array.from(btns).forEach((btn, index) => {
   btn.addEventListener("click", () => {
     getComputerChoice();
     getHumanChoice(index);
-    playGame();
+    // playGame();
   });
 });
 
@@ -49,7 +51,7 @@ const updateUI = (node, index, section) => {
 
 function playRound() {
   if (humanChoice === computerChoice) {
-    console.log("Both picked same choice, please try again!");
+    resultState.textContent = "Same choices! play again";
   }
 
   // Humanlose scenario
@@ -59,9 +61,7 @@ function playRound() {
     (humanChoice === "Scissors" && computerChoice === "Rock")
   ) {
     computerScore++;
-    console.log(
-      `You, lose! ${computerChoice} beat ${humanChoice} | your score=${humanScore} / system score=${computerScore}`
-    );
+    resultState.textContent = " You lose";
   }
 
   // Humanwin scenario
@@ -71,9 +71,7 @@ function playRound() {
     (humanChoice === "Scissors" && computerChoice === "Paper")
   ) {
     humanScore++;
-    console.log(
-      `You won! ${humanChoice} beat ${computerChoice} | your score=${humanScore} / system score=${computerScore}`
-    );
+    resultState.textContent = " You Win";
   }
 
   score.textContent = humanScore;
@@ -85,16 +83,23 @@ const resetGame = () => {
   score.textContent = 0;
 };
 
-function playGame() {
+playAgainBtn.addEventListener("click", () => {
+  resultContainer.classList.add("hide");
+  gameBoardContainer.classList.remove("hide");
+
+  /* 
+  When one of players reaches 3 scores:
+  the winner is picked and scores are reset
+  */
   if (Number(score.textContent) === 3) {
     alert(
       `cangrats, you won! your score=${humanScore} | system score=${computerScore}`
     );
-    resetScores();
+    resetGame();
   } else if (computerScore === 3) {
     alert(
       `System won!system score=${computerScore} | your score=${humanScore}`
     );
-    resetScores();
+    resetGame();
   }
-}
+});

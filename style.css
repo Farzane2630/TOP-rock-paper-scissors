@@ -114,4 +114,44 @@ button.choice {
   border: 1em var(--Gold-500) solid;
 }
 
+/* Result section */
+.result-section {
+display: flex;
+gap: 1em;
+justify-content: center;
+align-items: center;
+}
 
+.result-section.hide{
+    display: none;
+}
+
+.final-choice-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 1em;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.result-wrapper {
+    display: grid;
+    gap: 1em;
+}
+
+.result-state {
+    color: white;
+    font-weight: 700;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.play-again-btn {
+background-color: white;
+padding: 1em 2em;
+font-weight: 600;
+border-radius: 1em;
+cursor: pointer;
+color: var(--Blue-700);
+}

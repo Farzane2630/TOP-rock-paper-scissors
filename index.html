@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
@@ -35,15 +35,21 @@
       </section>
 
       <section class="result-section hide">
-        <div class="human-choice">
-            <button type="button">
-                <img src="" alt="">
+        <div class="final-choice-wrapper">
+          <strong>You picked</strong>
+          <div class="human-choice"></div>
+        </div>
+
+        <div class="result-wrapper">
+            <h1 class="result-state"></h1>
+            <button type="button" class="play-again-btn">
+                Play Again
             </button>
-        </div> 
-        <div class="computer-choice">
-            <button type="button">
-                <img src="" alt="">
-            </button>
+        </div>
+
+        <div class="final-choice-wrapper">
+          <strong>System picked</strong>
+          <div class="computer-choice"></div>
         </div>
       </section>
     </main>
