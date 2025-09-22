@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+    />
     <script src="script.js" defer></script>
     <title>TOP | Rock Paper Scissors</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <img src="/images/logo.svg" alt="logo" />
+      <div class="score-container">
+        <p>Score</p>
+        <h2 id="score">0</h2>
+      </div>
+    </header>
+    <main>
+      <section class="game-board-section" aria-label="game-board">
+        <div class="choice-wrapper">
+          <button type="button" class="choice paper">
+            <img src="/images/icon-paper.svg" alt="paper" />
+          </button>
+          <button type="button" class="choice scissors">
+            <img src="/images/icon-scissors.svg" alt="scissors" />
+          </button>
+        </div>
+        <button type="button" class="choice rock">
+          <img src="/images/icon-rock.svg" alt="rock" />
+        </button>
+      </section>
+
+      <section class="result-section hide">
+        <div class="final-choice-wrapper">
+          <strong>You picked</strong>
+          <div class="human-choice"></div>
+        </div>
+
+        <div class="result-wrapper">
+            <h1 class="result-state"></h1>
+            <button type="button" class="play-again-btn">
+                Play Again
+            </button>
+        </div>
+
+        <div class="final-choice-wrapper">
+          <strong>System picked</strong>
+          <div class="computer-choice"></div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
